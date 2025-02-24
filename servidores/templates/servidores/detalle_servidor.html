@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Servidor</title>
+</head>
+<body>
+    <h1>{{ servidor.nombre }}</h1>
+    <p><strong>Dirección IP:</strong> {{ servidor.direccion_ip }}</p>
+    <p><strong>Sistema Operativo:</strong> {{ servidor.sistema_operativo }}</p>
+    <p><strong>Descripción:</strong> {{ servidor.descripcion }}</p>
+    <a href="{% url 'lista_servidores' %}">Volver al listado</a>
+</body>
+</html>

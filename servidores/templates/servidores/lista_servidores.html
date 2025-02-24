@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Servidores</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;  
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f9;
+        }
+        .create-button {
+            background-color: #28a745;  
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px; 
+        }
+        .create-button:hover {
+            background-color: #218838;  
+        }
+        .logout-button {
+            background-color: #dc3545;  
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;  
+        }
+        .logout-button:hover {
+            background-color: #c82333;  
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de Servidores</h1>
+
+   
+    <a href="{% url 'crear_servidor' %}" class="create-button">Crear Nuevo Servidor</a>
+
+    <a href="{% url 'logout' %}" class="logout-button">Cerrar Sesión</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Dirección IP</th>
+                <th>Sistema Operativo</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for servidor in servidores %}
+                <tr>
+                    <td>{{ servidor.nombre }}</td>
+                    <td>{{ servidor.direccion_ip }}</td>
+                    <td>{{ servidor.sistema_operativo }}</td>
+                    <td>{{ servidor.descripcion }}</td>
+                    <td>
+                        <a href="{% url 'editar_servidor' servidor.pk %}">Editar</a>
+                        <a href="{% url 'eliminar_servidor' servidor.pk %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
